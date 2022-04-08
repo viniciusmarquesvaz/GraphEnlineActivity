@@ -4,50 +4,53 @@ import Index from "./Index";
 
 //const GraphLayout =  ({redX, redY , greenX, greenY, markerX ,markerY}) => {
 const GraphLayout = (props) => {
-  console.log(props);
+  
+
 
   const { insertDataGraph } = props;
   const { redGraph, greenGraph, markerGraph } = insertDataGraph;
-  console.log(redGraph);
+  const { insertLayoutGraph } = props;
+  const { widthLayout, heightLayout, titleLayout } = insertLayoutGraph;
 
   return (
     <div id="graph">
       <Plot
         data={[
           {
-            id: "redLine",
-            type: "scartter",
-            mode: "lines+markers",
-            marker: { color: "red" },
+            type: redGraph.type,
+            mode: redGraph.mode,
+            marker: { color: redGraph.color },
             x: redGraph.xAxis,
             y: redGraph.yAxis,
+            name: redGraph.name,
           },
 
           {
-            id: "greenLine",
-            type: "scatter",
-            mode: "lines+markers",
-            marker: { color: "green" },
+            type: greenGraph.type,
+            mode: greenGraph.mode,
+            marker: { color: greenGraph.color },
             x: greenGraph.xAxis,
-            y: markerGraph.yAxis,
+            y: greenGraph.yAxis,
+            name: greenGraph.name,
           },
 
           {
-            id: "markerLine",
-            type: "scatter",
-            mode: "markers",
-            marker: { color: "orange" },
-            size: 12,
-            width: 3,
+            type: markerGraph.type,
+            mode: markerGraph.mode,
+            marker: { color: markerGraph.color },
             x: markerGraph.xAxis,
             y: markerGraph.yAxis,
+            name: markerGraph.name,
           },
         ]}
-        layout={{ width: 1000, height: 500 }}
+        layout={{
+          width: widthLayout,
+          height: heightLayout,
+          title: titleLayout,
+        }}
       />
     </div>
   );
 };
 
 export default GraphLayout;
-

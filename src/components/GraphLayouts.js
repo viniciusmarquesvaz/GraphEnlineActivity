@@ -7,33 +7,10 @@ const GraphLayout = (props) => {
   const { insertDataGraph } = props;
   const { redGraph, greenGraph, markerGraph } = insertDataGraph;
 
-  const numGraph = () => {
-    var numberOfGraphs = 0;
-    numberOfGraphs = prompt(
-      "Digite o número referente a quantidade de gŕaficos que deseja inserir na apresentação /n"
-    );
-    if (numberOfGraphs < 0) {
-      return;
-    } else if (numberOfGraphs > 0) {
-      let newLineGraph;
-
-      for (var i = 0; i < numberOfGraphs.length; i++) {
-        greenGraph = newLineGraph.push({
-          x: redGraph.xAxis,
-          y: greenGraph.yAxis,
-          mode: "lines+markers",
-          type: "scatter",
-          name: "elemento 1",
-          marker: { color: "red" },
-        });
-      }
-    }
-  };
-
   let GraphData = [
     {
       x: redGraph.xAxis,
-      y: greenGraph.yAxis,
+      y: redGraph.yAxis,
       mode: "lines+markers",
       type: "scatter",
       name: "elemento 1",

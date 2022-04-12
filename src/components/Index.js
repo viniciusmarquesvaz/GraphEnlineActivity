@@ -2,33 +2,41 @@ import React, { useState, useEffect } from "react";
 import GraphLayouts from "./GraphLayouts";
 
 const Index = () => {
-  //gerador de um array
-  function generateXdata(a, b) {
-    var array = [];
-    while (a < b + 1) {
-      array.push(a++);
+  const generateXdata = (size) => {
+    const sizeArrayX = [];
+    for (let i = 0; i < size; i++) {
+      sizeArrayX.push(i++);
     }
-    return array;
-  }
-  console.log(generateXdata(0, 100));
-
-  //gerador de numeros aleatórios
-  const generateYdata = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+    return sizeArrayX;
   };
+
+  const generateRandomNumY = () => {
+    return Math.floor(Math.random() * (100 - 50 + 1)) + 50;
+  };
+
+  const generateYdata = () => {
+    const sizeArrayY = [];
+    for (let i = 0; i < 100; i++) {
+      let randomNumY = generateRandomNumY();
+      sizeArrayY.push(randomNumY);
+    }
+    return sizeArrayY;
+  };
+
+  console.log(generateYdata());
 
   const PlotData = {
     redGraph: {
-      xAxis: [50, 50, 40, 80, 60],
-      yAxis: [1, 2, 3, 4, 5],
+      xAxis: generateXdata(100),
+      yAxis: generateYdata(),
     },
     greenGraph: {
-      xAxis: [41, 34, 97, 20],
-      yAxis: [1, 2, 3, 4, 5],
+      xAxis: generateXdata(100),
+      yAxis: generateYdata(),
     },
     markerGraph: {
-      xAxis: [14, 47, 65, 12, 5],
-      yAxis: [1, 2, 3, 4, 5],
+      xAxis: generateXdata(100),
+      yAxis: generateYdata(),
     },
   };
 

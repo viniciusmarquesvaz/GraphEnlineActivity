@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import GraphLayouts from "./GraphLayouts";
 
-const Index = () => {
+const Index = (props) => {
   const generateXdata = (size) => {
     const sizeArrayX = [];
     for (let i = 0; i < size; i++) {
@@ -22,8 +22,6 @@ const Index = () => {
     }
     return sizeArrayY;
   };
-
-  console.log(generateYdata());
 
   const PlotData = {
     redGraph: {

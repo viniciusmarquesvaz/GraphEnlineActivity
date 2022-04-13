@@ -7,25 +7,61 @@ const GraphLayout = (props) => {
   const { insertDataGraph } = props;
   const { redGraph, greenGraph, markerGraph } = insertDataGraph;
 
-  let GraphData = { ...interationGraph };
+  // let GraphData = [
+  //   {
+  //     x: redGraph.xAxis,
+  //     y: redGraph.yAxis,
+  //     mode: "lines+markers",
+  //     type: "scatter",
+  //     name: "elemento 1",
+  //     marker: { color: "red" },
+  //   },
+  //   {
+  //     x: greenGraph.xAxis,
+  //     y: greenGraph.yAxis,
+  //     mode: "lines+markers",
+  //     type: "scatter",
+  //     name: "elemento 2",
+  //     marker: { color: "green" },
+  //   },
+  //   {
+  //     x: markerGraph.xAxis,
+  //     y: markerGraph.yAxis,
+  //     mode: "markers",
+  //     type: "scatter",
+  //     name: "elemento 3",
+  //     marker: { color: "orange" },
+  //   },
+  // ];
   const GraphLayout = {
     widthLayout: 1000,
     heightLayout: 500,
     titleLayout: "EnlineGraph",
   };
 
-  const interationGraph = () => {
-    Object.keys(GraphData).forEach((key) => {
-      console.log(key, GraphData[key]);
+  const getPlotData = () => {
+    //FAZER: Passar os outros atributos para o gráfico via props: Mode, Name e marker color.
+    let graphDataList = [];
+    Object.keys(insertDataGraph).forEach((graphData) => {
+      console.log(graphData);
+      console.log(insertDataGraph[graphData]);
+      graphDataList.push({
+        x: insertDataGraph[graphData].xAxis,
+        y: insertDataGraph[graphData].yAxis,
+        mode: insertDataGraph[graphData].modeGraph,
+        type: insertDataGraph[graphData].gettypeGraph,
+        name: insertDataGraph[graphData].nameGraph,
+        marker: insertDataGraph[graphData].color,
+      });
     });
+    console.log(graphDataList);
+    return graphDataList;
   };
-
-  console.log(interationGraph());
 
   return (
     <div id="graph">
       <Plot
-        data={[...GraphData]}
+        data={[...getPlotData()]}
         layout={{
           ...GraphLayout,
         }}

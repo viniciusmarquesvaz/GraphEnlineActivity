@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import GraphLayouts from "./GraphLayouts";
 
-const Index = (props) => {
+const Index = () => {
   const generateXdata = (size) => {
     const sizeArrayX = [];
     for (let i = 0; i < size; i++) {
@@ -58,7 +58,16 @@ const Index = (props) => {
     return generateColors(1);
   };
 
-  const insertDataGraph = {
+  const [dataValues, setDatavalues] = useState(DataString);
+  useEffect(() => {
+    manipulateDataValues();
+  }, [DataString]);
+
+  const manipulateDataValues = () => {
+    setDatavalues(!DataString);
+  };
+
+  const DataString = {
     redGraph: {
       xAxis: generateXdata(100),
       yAxis: generateYdata(),
@@ -87,8 +96,12 @@ const Index = (props) => {
 
   return (
     <div>
-      <GraphLayouts insertDataGraph={insertDataGraph} />
-      <button>teste</button>
+      <GraphLayouts
+        insertDataGraph2={dataValues}
+        insertDataGraph={DataString}
+      />
+      <button>teste </button>
+      <p>Teste para salvar o estado do elemento </p>
     </div>
   );
 };

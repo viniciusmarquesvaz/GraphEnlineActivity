@@ -6,33 +6,8 @@ import Index from "./Index";
 const GraphLayout = (props) => {
   const { insertDataGraph } = props;
   const { redGraph, greenGraph, markerGraph } = insertDataGraph;
+  const { insertDataGraph2 } = props;
 
-  // let GraphData = [
-  //   {
-  //     x: redGraph.xAxis,
-  //     y: redGraph.yAxis,
-  //     mode: "lines+markers",
-  //     type: "scatter",
-  //     name: "elemento 1",
-  //     marker: { color: "red" },
-  //   },
-  //   {
-  //     x: greenGraph.xAxis,
-  //     y: greenGraph.yAxis,
-  //     mode: "lines+markers",
-  //     type: "scatter",
-  //     name: "elemento 2",
-  //     marker: { color: "green" },
-  //   },
-  //   {
-  //     x: markerGraph.xAxis,
-  //     y: markerGraph.yAxis,
-  //     mode: "markers",
-  //     type: "scatter",
-  //     name: "elemento 3",
-  //     marker: { color: "orange" },
-  //   },
-  // ];
   const GraphLayout = {
     widthLayout: 1000,
     heightLayout: 500,
@@ -40,18 +15,17 @@ const GraphLayout = (props) => {
   };
 
   const getPlotData = () => {
-    //FAZER: Passar os outros atributos para o gráfico via props: Mode, Name e marker color.
     let graphDataList = [];
-    Object.keys(insertDataGraph).forEach((graphData) => {
+    Object.keys(insertDataGraph2).forEach((graphData) => {
       console.log(graphData);
-      console.log(insertDataGraph[graphData]);
+      console.log(insertDataGraph2[graphData]);
       graphDataList.push({
-        x: insertDataGraph[graphData].xAxis,
-        y: insertDataGraph[graphData].yAxis,
-        mode: insertDataGraph[graphData].modeGraph,
-        type: insertDataGraph[graphData].gettypeGraph,
-        name: insertDataGraph[graphData].nameGraph,
-        marker: insertDataGraph[graphData].color,
+        x: insertDataGraph2[graphData].xAxis,
+        y: insertDataGraph2[graphData].yAxis,
+        mode: insertDataGraph2[graphData].modeGraph,
+        type: insertDataGraph2[graphData].gettypeGraph,
+        name: insertDataGraph2[graphData].nameGraph,
+        marker: insertDataGraph2[graphData].color,
       });
     });
     console.log(graphDataList);

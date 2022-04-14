@@ -58,11 +58,16 @@ const Index = () => {
     return generateColors(1);
   };
 
+  // definição da cadeia de dados como estado inicial
+
   const [dataValues, setDatavalues] = useState(DataString);
+
+  //estrutura do useEffect
   useEffect(() => {
     manipulateDataValues();
   }, [DataString]);
 
+  // estrutura da função para setar e enviar para o use effect
   const manipulateDataValues = () => {
     setDatavalues(!DataString);
   };
@@ -97,6 +102,7 @@ const Index = () => {
   return (
     <div>
       <GraphLayouts
+        // passando o state para uma propiedade para inserir no gŕafico
         insertDataGraph2={dataValues}
         insertDataGraph={DataString}
       />

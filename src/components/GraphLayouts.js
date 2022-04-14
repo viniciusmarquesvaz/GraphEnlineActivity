@@ -2,10 +2,10 @@ import React from "react";
 import Plot from "react-plotly.js";
 import Index from "./Index";
 
-//const GraphLayout =  ({redX, redY , greenX, greenY, markerX ,markerY}) => {
 const GraphLayout = (props) => {
   const { insertDataGraph } = props;
   const { redGraph, greenGraph, markerGraph } = insertDataGraph;
+  // resgatei o atributo que passei pela prop
   const { insertDataGraph2 } = props;
 
   const GraphLayout = {
@@ -13,6 +13,8 @@ const GraphLayout = (props) => {
     heightLayout: 500,
     titleLayout: "EnlineGraph",
   };
+
+  //fiz a troca do insertDataGraph para insertDataGraph2 demtro do ObjectKeys e dos valores passados
 
   const getPlotData = () => {
     let graphDataList = [];
